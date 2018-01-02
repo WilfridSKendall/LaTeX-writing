@@ -1,0 +1,126 @@
+\documentclass[]{article}
+\usepackage{ifpdf}
+
+\newcommand{\Title}{LaTeX-writing}
+\newcommand{\Subject}{A preprint}
+
+\usepackage[british]{babel}
+\newcommand{\Date}{\today}
+
+\synctex=1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Various packages.
+\usepackage{calc, xspace}
+\usepackage{amsmath, amsthm, amsfonts, euscript}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Bibtex
+\usepackage[longnamesfirst]{natbib}
+\setcitestyle{round}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Font selection
+% \usepackage[T1]{fontenc}
+% \usepackage[expert,altbullet,seriftt]{lucidabr}
+\usepackage{times}
+\usepackage[utf8x]{inputenc}
+\usepackage{ccfonts,eulervm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Tracking queries (NB also loads colours!)
+\RequirePackage[no-comment]{WSKtracking}  %% Colour and Graphics
+
+\definecolor{linkcolor}{named}{Maroon}
+\definecolor{citecolor}{named}{PineGreen}
+%\definecolor{pagecolor}{named}{Maroon}
+\definecolor{urlcolor}{named}{RoyalPurple}
+\definecolor{okcolor}{named}{OliveGreen}
+\definecolor{alertcolor}{named}{BrickRed}
+
+\ifpdf
+ \DeclareGraphicsExtensions{.png,.jpg}%
+\else
+ \DeclareGraphicsExtensions{.eps,.ps,.png,.jpg}%
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Page format and latex key display
+%\usepackage{a4wide}
+\usepackage[totalwidth=480pt,totalheight=680pt]{geometry}
+% totalwidth  <=  8.26in
+% totalheight <= 11.00in
+%
+\usepackage[notcite,color]{showkeys}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Material for hyperref package.
+ \usepackage[
+ \ifpdf
+   pdftex,
+   unicode,
+ \fi
+ ]{hyperref}
+% \PrerenderUnicode{Π}
+% Then use, eg, \texorpdfstring{$\Pi$}{Π} in section title.
+ \hypersetup{
+ pdfauthor={Wilfrid S. Kendall},
+ pdftitle={\Title},
+% pdfsubject={Coupling for Brownian motions augmented with local times},
+ }
+ \hypersetup{citecolor=citecolor}
+ \hypersetup{linkcolor=linkcolor}
+% \hypersetup{pagecolor=pagecolor}
+ \hypersetup{urlcolor=urlcolor}
+ \hypersetup{colorlinks=true}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Mathematics
+\RequirePackage{WSKmaths}
+\graphicspath{{image/}}
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Document
+ \begin{document}
+ \TrackingPreamble
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Title page
+ \title{\Title}
+ \author{%
+\texorpdfstring{\href{http://warwick.ac.uk/wsk}{Wilfrid S. Kendall}\qquad%
+                 \href{mailto:w.s.kendall@warwick.ac.uk}%
+                 {(w.s.kendall@warwick.ac.uk)}}%
+	        {Wilfrid S. Kendall}
+}
+ \date{\Date}
+ \maketitle
+
+% =========================================   
+\begin{abstract}\noindent
+\TBC{(add abstract here, preceded by list of keywords and AMS subject classification)}
+\end{abstract}
+
+% =========================================   
+ \section{Introduction}\label{sec:introduction}
+   \TBC{Unfinished!}
+Very good general reference for \LaTeX: \citet{GoosensMittelbachSamarin-1994}.
+   
+% =========================================   
+ \section{Conclusion}\label{sec:conclusion}
+   \TBC{Unfinished!}
+
+% =========================================   
+%   \scriptsize \input hyperbib
+%   \label{sec:bibliography}
+   \bibliographystyle{plainnat}
+   \bibliography{LaTeX-writing}
+
+\appendix
+\twocolumn
+\pagenumbering{alph}
+\setcounter{page}{1}
+
+\TrackingPostamble
+
+\end{document}

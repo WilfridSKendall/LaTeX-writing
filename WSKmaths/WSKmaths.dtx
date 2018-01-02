@@ -1,0 +1,577 @@
+ 
+% \iffalse meta-comment
+% !TEX program  = pdfLaTeX
+%<*internal>
+\iffalse
+%</internal>
+%<*readme>
+----------------------------------------------------------------
+WSKmaths --- useful mathematical definitions.
+E-mail: w.s.kendall@warwick.ac.uk
+Released under the MIT License.
+----------------------------------------------------------------
+
+This package loads useful mathematics packages, provides a number of useful environments, and defines a number of significant macros.
+%</readme>
+%<*internal>
+\fi
+\def\nameofplainTeX{plain}
+\ifx\fmtname\nameofplainTeX\else
+  \expandafter\begingroup
+\fi
+%</internal>
+%<*install>
+\input docstrip.tex
+\keepsilent
+\askforoverwritefalse
+\preamble
+----------------------------------------------------------------
+WSKmaths --- useful mathematical definitions.
+E-mail: w.s.kendall@warwick.ac.uk
+Released under the MIT License.
+----------------------------------------------------------------
+
+\endpreamble
+\postamble
+
+Copyright (C) 2012, 2015 by Wilfrid S. Kendall <w.s.kendall@warwick.ac.uk>
+
+This work may be distributed and/or modified under the
+conditions of the MIT License.
+
+This work is "maintained" by Wilfrid S. Kendall.
+
+This work consists of the file  WSKmaths.dtx
+and the derived files           WSKmaths.ins,
+                                WSKmaths.pdf and
+                                WSKmaths.sty.
+
+\endpostamble
+\usedir{tex/latex/WSKmaths}
+\generate{
+  \file{\jobname.sty}{\from{\jobname.dtx}{package}}
+}
+%</install>
+%<install>\endbatchfile
+%<*internal>
+\usedir{source/latex/WSKmaths}
+\generate{
+  \file{\jobname.ins}{\from{\jobname.dtx}{install}}
+}
+\nopreamble\nopostamble
+\usedir{doc/latex/WSKmaths}
+\generate{
+  \file{README.txt}{\from{\jobname.dtx}{readme}}
+}
+\ifx\fmtname\nameofplainTeX
+  \expandafter\endbatchfile
+\else
+  \expandafter\endgroup
+\fi
+%</internal>
+%<*package>
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{WSKmaths}[2016/02/06 v1.2 Useful mathematical definitions.]
+%</package>
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{a4wide}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[british]{babel}
+\usepackage{\jobname}
+\usepackage[numbered]{hypdoc}
+\usepackage[longnamesfirst,round]{natbib}
+\usepackage[notcite]{showkeys}
+\usepackage{graphicx}
+\EnableCrossrefs
+\CodelineIndex
+\OnlyDescription
+\begin{document}
+  \DocInput{\jobname.dtx}
+\end{document}
+%</driver>
+% \fi
+% 
+%\GetFileInfo{\jobname.sty}
+%
+%\title{^^A
+%  \textsf{WSKmaths} --- Useful mathematical definitions.
+%}
+%\author{^^A
+%  Wilfrid S. Kendall\thanks{E-mail: \url{w.s.kendall@warwick.ac.uk}}^^A
+%}
+%\date{This version \today}
+%
+%\maketitle
+%
+%\changes{v1.0}{2009/10/06}{First public release}
+%
+% This package ensures that a number of useful mathematics packages are loaded, 
+% provides a number of useful theorem-like environments, 
+% and defines a number of significant mathematics macros.
+% The concluding section offers a few general remarks about writing in \LaTeX.
+%
+% \section{Packages}
+% The mathematics packages loaded by this package are
+% \begin{itemize}
+% \item\verb+amsmath+, 
+% \item\verb+amsfonts+, 
+% \item\verb+amsthm+, 
+% \item\verb+framed+, 
+% \item\verb+caption+, 
+% \item\verb+xspace+.
+% \end{itemize}
+% It is worth looking at the documentation for \verb+amsmath+ (\url{ftp://ftp.ams.org/pub/tex/doc/amsmath/amsldoc.pdf})
+% and \verb+amsthm+ (\url{ftp://ftp.ams.org/pub/tex/doc/amscls/amsthdoc.pdf});
+% depending on your writing style, some constructions in these might save much  time and effort. 
+%
+% \section{Theorem-like environments}
+% The package defines theorem-like environments as follows, all numbered consecutively as a whole:
+% \begin{itemize}
+% \item in theorem-style:
+%  \begin{itemize}
+%  \item \verb+thm+ (theorems),
+%  \item \verb+prop+ (propositions),
+%  \item \verb+lem+ (lemmas),
+%  \item \verb+cor+ (corollaries),
+%  \item \verb+exercise+ (exercises);
+%  \end{itemize}
+% \item in separate styles:
+%  \begin{itemize}
+%  \item \verb+defn+ (definitions, in definition style),
+%  \item \verb+rem+ (remarks, in remark style).
+%  \item \verb+qn+ (questions, in remark style).
+%  \end{itemize}
+% \end{itemize}
+% Proofs should be enclosed in a \verb+\begin{proof}+ \ldots \verb+\end{proof}+ environment.
+%
+% \section{Mathematical macros}
+% It is convenient to replace commonly used mathematical constructions by {\LaTeX} macros.
+% This makes it easier to maintain notational consistency, and also it is then easier to change notation if (for example) it becomes apparent that notation clashes.
+% The package defines these macros:
+% \begin{itemize}
+% \item \DescribeMacro{\CFTP}
+% The Coupling from the Past algorithm is abbreviated by \(\CFTP\): use \verb+\CFTP+ (text mode).
+% This and the following two textual macros do not save much typing, but facilitate textual consistency and coherent typographical style.
+% \item \DescribeMacro{\Ito}
+% For \Ito (as in the {\Ito} differential), use \verb+\Ito+ (text mode).
+% \item \DescribeMacro{\MCMC}
+% Abbreviate Markov chain Monte Carlo by \MCMC: use \verb+\MCMC+ (text mode).
+% \item \DescribeMacro{\Borel}
+% Denote the Borel \(\sigma\)-algebra by \(\Borel\): use \verb+\Borel+.
+% \item \DescribeMacro{\Expect}
+% Write \(\Expect{X}\) for the expectation of the random variable \(X\): use \verb+\Expect{X}+. 
+% The enclosing square brackets will change size to encompass the argument.
+% (For multi-line expectations, you'll have to do this the hard way,
+% using \verb+\mathbb{E}\Big[...\Big]+, or variants.)
+% \item \DescribeMacro{\Indicator}
+% Write \(\Indicator{A}\) for the indicator of the event \(A\): use \verb+\Indicator{A}+.
+% The enclosing square brackets will change size to encompass the argument.
+% Note that \citet{Williams-1991}'s notation \(\Expect{X\;;\;A}\) (\verb+\Expect{X\;;\;A}+) is more concise and ultimately more readable than the equivalent
+% \(\Expect{X\,\Indicator{A}}\).
+% For conditional expectation use \verb+\Expect{X\;|\;Y}+.
+% \item \DescribeMacro{\Integers}
+% Denote the set of integers by \(\Integers\): write \verb+\Integers+.
+% \item \DescribeMacro{\Hess}
+% Denote the Hessian (covariant second derivative) of a function \(f\) in directions \(U\) and \(V\) by \(\Hess f(U,V)\): use \verb+\Hess f(U,V)+.
+% \item \DescribeMacro{\Law}
+% Write \(\Law{X}\) for the law of the random variable \(X\): use \verb+\Law{X}+.
+% \item \DescribeMacro{\Leb}
+% Write \(\Leb(A)\) for the Lebesgue measure of a set \(A\): use \verb+\Leb(A)+.
+% \item \DescribeMacro{\Numbers}
+% Denote the set of natural numbers by \(\Numbers\): use \verb+\Numbers+.
+% \item \DescribeMacro{\Prob}
+% Write \(\Prob{A}\) for the probability of the event \(A\): use \verb+\Prob{A}+.
+% The enclosing square brackets will change size to encompass the argument.
+% (For multi-line probabilities use \verb+\mathbb{P}\Big[...\Big]+ \emph{etc}.)
+% For conditional probability use \verb+\Prob{A\;|\;Y}+.
+% \item \DescribeMacro{\Rationals}
+% Denote the set of rational numbers by \(\Rationals\): use \verb+\Rationals+.
+% \item \DescribeMacro{\Reals}
+% Denote the set of real numbers by \(\Reals\): use \verb+\Reals+.
+% \item \DescribeMacro{\Var}
+% Write \(\Var{X}\) the variance of the random variable \(X\): use \verb+\Var{X}+.
+% The enclosing square brackets will change size to encompass the argument.
+% \item \DescribeMacro{\Cov}
+% Write \(\Cov{X,Y}\) the covariance of the random variables \(X\) and \(Y\): use \verb+\Cov{X,Y}+.
+% The enclosing square brackets will change size to encompass the argument.
+%
+% \item \DescribeMacro{\ball}
+% The metric ball of centre \(x\) and radius \(r\) is denoted by \(\ball(x,r)\): use \verb+\ball(x,r)+.
+% In exposition one should always be clear about whether one means the open or the closed ball! 
+%\item \DescribeMacro{\origin}
+%The origin of Euclidean space is denoted by \(\origin\): use \verb+\origin+. 
+%\item \DescribeMacro{\d}
+%\renewcommand{\d}{\,\operatorname{d}}
+%Some publishers (eg Cambridge University Press) advise that the differential notation in the integral \(\int f(x) \d{x}\), or derivative \(\tfrac{\d}{\d{x}}f(x)\) should use a specially defined symbol \verb+\d+,
+%as in \verb+\int f(x) \d{x}+ or \verb+\tfrac{\d}{\d{x}}f(x)+. Note that this overloads an original {\LaTeX} definition which uses \verb+\d+ to generate a dot below a symbol.
+% Note also the use of a thin space \verb+\,+ before \verb+\text{d}+ in the definition of \verb+\d+. 
+% This can clarify complicated expressions.
+%\item \DescribeMacro{\dist}
+%Denote the metric distance between two points \(x\) and \(y\) by \(\dist(x,y)\): use \verb+\dist(x,y)+. 
+% Note that the alternative notation \verb+d(x,y)+ could lead to a clash with notation for differentials.
+%\item \DescribeMacro{\eps}
+%An arbitrarily small positive scalar can be denoted by \(\eps\): use \verb+\eps+.
+%\item \DescribeMacro{\grad}
+%Denote the gradient of a function \(f\) by \(\grad f\): use \verb+\grad f+.
+%\item \DescribeMacro{\half}
+%Write the fraction of one half as \(\half\): use \verb+\half+. Note that \verb+\mathchoice+ is used to obtain different behaviour in superscript \(a^{\half}\), double superscript \(a^{a^{\half}}\), or displayed formulae:
+%\[
+% \text{kinetic energy} \quad=\quad \half v^2\,.
+%\]
+% If required, other fractions can be added to emulate this style.
+%\item \DescribeMacro{\sgn}
+%The sign of \(x\) can be written as \(\sgn(x)\): use \verb+\sgn(x)+.
+% Be clear about the value of \(\sgn(0)\)!
+%\end{itemize}
+%
+% \section{General remarks}
+%\renewcommand{\d}{\,\operatorname{d}}
+% These remarks are aimed at making the whole process of {\LaTeX} composition easier.
+% I strongly advise you to read this thoughtfully, and change your writing habits accordingly.
+% It may seem quicker and easier to dive straight in and write your {\LaTeX} paper without worrying about these details.
+% If you do this, you will end up working \emph{much} harder in the long run. Your choice!
+%
+% First of all, it helps to reduce the number of pages used by a document. 
+% (Every time you have to turn a page, you are going to have to make a continued mental effort to relate the mathematics on the current page with what came before!)
+% In your {\LaTeX} preamble, use \verb+\usepackage{a4wide}+ to ensure pages are typeset without the absurdly wide margins which are the default for \LaTeX.
+% Some writers allege that \verb+a4wide+ is deprecated (\url{http://latex-community.org/forum/viewtopic.php?f=47&t=18598}):
+% however there appears to be no succinct alternative.
+%
+% It is helpful to remember that much time will be spent staring at {\LaTeX} source,
+% and therefore it is worth spacing and laying this source out to make it easy to read and to debug!
+% For example, I lay out equation-type environments with plenty of line-breaks, 
+% particularly taking care to ensure the ``left-hand side'' and the ``right-hand side''
+% are on separate lines.\footnote{But, of course, making sure no blank lines occur, which would trigger {\LaTeX} errors.}
+% \footnote{On the subject of footnotes, \emph{avoid} using them wherever they might be confused with a superscript!}
+% Here is an example:
+% \[
+% \frac{1}{\sqrt{2\pi}} \int_x^\infty         e^{-u^2/2} {\d{u}} \quad\leq\quad 
+% \frac{1}{x}           \frac{1}{\sqrt{2\pi}} e^{-x^2/2}  \,. 
+% \]
+% The corresponding {\LaTeX} code is
+% \begin{verbatim}
+% \[
+%   \frac{1}{\sqrt{2\pi}} \int_x^\infty         e^{-u^2/2} \d{u} \quad\leq\quad 
+%   \frac{1}{x}           \frac{1}{\sqrt{2\pi}} e^{-x^2/2} \,.
+% \]
+% \end{verbatim}
+% Notice that I also ensure that the major relational operator in an equation (``\(=\)'', ``\(\geq\)'', ``\(\leq\)'', \ldots) 
+% is bracketed by \verb+\quad+ spaces.
+% This helps the reader to see immediately what the equation is all about, both in the final PDF and also in the source.
+% Notice also how punctuation in a formula is preceded by a thin space \verb+\,+.
+% (And notice that one \emph{should} add punctuation to ensure that the formula reads as part of the sentence.)
+% Mathematics is always difficult: there is no need to make it harder by ignoring these small but systematic points.
+%
+% Note also the use of \verb+\[+\ldots\verb+\]+ instead of \verb+$$+\ldots\verb+$$+ (similarly \verb+\(+\ldots\verb+\)+ instead of \verb+$+\ldots\verb+$+).
+% which protects against some otherwise confusing typos,\footnote{Because {\LaTeX} then can report more precisely \emph{where} you opened a {\LaTeX} mathematics
+% mode without closing the previous one. At the cost of an easily-learned extra keystroke, you can save whole hours of frustration tracking down {\LaTeX} bugs.}
+% Also make liberal use of line-breaks to clarify the text.
+% In fact it is a good rule, when typing {\LaTeX} source, to follow each full-stop and each major punctuation mark by a line-break.
+% This aids clarity when reading the {\LaTeX} source (a task which one performs continually when writing and editing a document), 
+% makes it easier to check which text has changed between one version and the next when using a file difference utility such as \verb+diff+ or
+% its visual equivalents \verb+vdiff+ or \verb+kdiff3+,
+% and also works better if you are using a {\LaTeX} editing environment such as \emph{Kile} \url{http://kile.sourceforge.net/}
+% or \emph{TeXnicCentre} \url{http://www.texniccenter.org/} or \emph{TeXshop} \url{http://pages.uoregon.edu/koch/texshop/},
+% any of which will compile {\LaTeX} and then jump to the appropriate line in the previewer. 
+% (And there are \emph{many} other advantages of using such an editing environment!)
+%
+% I noted above, \verb+amsmath+ has a variety of excellent mathematics display environments: get familiar with them!
+% Two of the most useful are \verb+multline+ for multi-line single equations,
+% and \verb+align+ for aligned groups of equations.
+% (But don't forget the use of \verb+\nonumber+ to suppress equation numbers for all but perhaps one of the aligned equations.)
+%
+% While writing {\LaTeX}, stay aware of the possibility of defining commonly used quantities using {\LaTeX} macros.
+% This makes it possible to change notation globally.
+% Suppose you speak a great deal about a Soboloev space \(W^2\) and then decide you want to change to \(L^{2,1}\), for example.
+% This is easy if you have used \verb+\Sobolev+,
+% coupled with \verb+\newcommand{\Sobolev}{W^2}+ in your preamble.
+%
+% It is useful to follow a consistent pattern when labelling equations, sections, \emph{etc}. 
+% Consider
+% \begin{equation}\label{eq:poisson}
+% \text{Poisson}(\lambda) \quad=\quad 
+% \frac{\lambda^n e^{-\lambda}}{n!} \qquad\text{ for }n=0,1,2,\ldots\,.
+% \end{equation}
+% This equation \eqref{eq:poisson} is written as
+% \begin{verbatim}
+% \begin{equation}\label{eq:poisson}
+%   \text{Poisson}(\lambda) \quad=\quad 
+%     \frac{\lambda^n e^{-\lambda}}{n!}
+%     \qquad\text{ for }n=0,1,2,\ldots\,.
+% \end{equation}
+% \end{verbatim}
+% and is conveniently referred to by use of \verb+\eqref{eq:poisson}+. 
+% Note that \verb+\eqref+ automatically surrounds the reference with brackets!
+%
+% Similarly, for example, use \verb+\label{thm:main-result}+ for an instance of the theorem-like environment \verb+thm+,
+% and \verb+\label{sec:intro}+ for an introductory section.
+%
+% Figures are made easier by the \verb+Figure+ environment. 
+% Label figures by \verb+\label{fig:homer}+, \emph{etc},
+% taking care to label \emph{within} the \verb+caption+ content!).
+% Note that it is often convenient to store all graphics in a subdirectory \verb+image+.
+% The preamble command \verb+\graphicspath{{./image/}}+ allows one to dispense with \verb+image/+
+% when referring to an graphic in \verb+includegraphics+.
+% \DescribeEnv{Figure}
+% \begin{verbatim}
+%   \begin{Figure}
+%     \includegraphics[width=3in]{under-construction}
+%       \caption{Example of simple figure.
+%         \label{fig:homer}}
+%    \end{Figure}
+%   \end{verbatim}
+% \begin{Figure}
+% \includegraphics[width=3in]{under-construction}
+% \caption{Example of simple figure.
+% \label{fig:homer}}
+% \end{Figure}
+%
+% When drafting a paper, consider using  
+% \verb+\usepackage{showkeys}+. This \verb+usepackage+ invocation must occur
+% \emph{after} the invocations of \verb+\usepackage{amsmath}+ and \verb+\usepackage{hyperref}+.
+% As seen above, this will, for example, place \verb+eq:poisson+ in the margin by the relevant equation
+% \emph{et cetera}
+% and will annotate references \eqref{eq:poisson} appropriately.
+%
+% Finally, a similar consistent labelling is useful for {\BibTeX} references; consider for example this reference
+% \citet{GoosensMittelbachSamarin-1994}, which is labelled using my preferred \verb+Authors-year+ style\footnote{
+% Why preferred? because I can then immediately and unambiguously check I have cited the correct reference in the PDF.}
+% as follows:
+% \verb+\citet{GoosensMittelbachSamarin-1994}+.
+% Perhaps this seems tedious to you? 
+% But (a) good {\LaTeX} editing environments can be set up to auto-complete \verb+\citet{Goos...}+,
+% (b) it is easy to copy-and-paste \verb+GoosensMittelbachSamarin-1994+ from the \verb+.bib+ file entry (see below),
+% (c) you can then easily and consistently identify the cited reference from the source as well as the PDF output.
+%
+% The \verb+.bib+ file contains this entry in the following form:
+% \begin{verbatim}
+% @book{GoosensMittelbachSamarin-1994,
+%   author = {Goossens, Michel and Mittelbach, Frank and Samarin, Alexander},
+%   booktitle = {Human Factors},
+%   pages = {528},
+%   title = {{The LaTeX Companion}},
+%   publisher = {Addison-Wesley},
+%   address = {reading, Massachusetts},
+%   year = {1994}
+% } 
+% \end{verbatim}
+% I prefer to use \verb+\usepackage{natbib}+ with a name-date system (the default for \verb+natbib+).
+% This offers considerable flexibility, for example using \verb+\citep+ for a reference in parentheses
+% \citep{GoosensMittelbachSamarin-1994}. See the \verb+natbib+ quick reference for more details:
+% \url{http://merkel.zoneo.net/Latex/natbib.php}.
+% I have modified \verb+\usepackage{showkeys}+ to \verb+\usepackage[notcite]{showkeys}+, so as to avoid 
+% annotating citations with keys, redundant if one constructs citations as \verb+Authors-year+.
+%
+% It is beyond the scope of this note, but be aware that one can save huge amounts of time
+% by using a bibliography manager such as \emph{Mendeley} \url{http://www.mendeley.com/}.
+% My set-up allows collection of references from the web using \emph{Zotero} \url{https://www.zotero.org/} with a single click. 
+% These then transfer automatically to \emph{Mendeley}.
+% When dragged into a particular \emph{Mendeley} group, they are stored in {\BibTeX} form in various \verb+.bib+ files
+% which can then be used directly by my various writing projects.
+% Get this set up correctly, and you can then easily add references in final form \emph{as you are drafting the {\LaTeX}}.
+% Why might you want to do this?
+% (a) Completing the bibliography is a tedious chore at the end of a writing project,
+% but easily done bit-by-bit when writing;
+% (b) A steadily increasing bibliography is a great motivator when writing!
+%
+% Saving time and effort in all these ways makes mathematical writing much easier.
+%
+% \bibliographystyle{plainnat}
+% \bibliography{WSKmaths}
+%
+%\StopEventually{^^A
+%  \PrintChanges
+%  \PrintIndex
+%}
+%
+%    \begin{macrocode}
+%<*package>
+%    \end{macrocode}
+%    
+%
+%    \begin{macrocode}
+
+ \RequirePackage{amsmath}
+ \RequirePackage{amsthm}
+ \RequirePackage{amsfonts}
+ \RequirePackage{framed}
+ \RequirePackage[small]{caption}
+ \RequirePackage{xspace}
+
+\theoremstyle{plain}
+ \newtheorem{thm}{Theorem}
+ \newtheorem{proposition}[thm]{Proposition}
+ \newtheorem{lem}[thm]{Lemma}
+ \newtheorem{cor}[thm]{Corollary}
+ \newtheorem{exercise}[thm]{Exercise}
+\theoremstyle{definition}
+ \newtheorem{defn}[thm]{Definition}
+\theoremstyle{remark}
+ \newtheorem{rem}[thm]{Remark}
+ \newtheorem{qn}[thm]{Question}
+%    \end{macrocode}
+
+
+%\begin{macro}{\Borel}
+%    \begin{macrocode}
+ \newcommand{\Borel}{\mathfrak{B}}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\CFTP}
+%    \begin{macrocode}
+ \newcommand{\CFTP}{\emph{CFTP}\xspace}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\Expect}
+%    \begin{macrocode}
+ \newcommand{\Expect}[1]{\operatorname{\mathbb{E}}\left[#1\right]}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\Indicator}
+%    \begin{macrocode}
+ \newcommand{\Indicator}[1]{\operatorname{\mathbb{I}}\left[#1\right]}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\Integers}
+%    \begin{macrocode}
+ \newcommand{\Integers}{\mathbb{Z}}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\Hess}
+%    \begin{macrocode}
+ \DeclareMathOperator{\Hess}{Hess}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\Ito}
+%    \begin{macrocode}
+ \newcommand{\Ito}{It\^o\xspace}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\Law}
+%    \begin{macrocode}
+ \newcommand{\Law}[1]{\mathcal{L}\left({#1}\right)}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\Leb}
+%    \begin{macrocode}
+ \newcommand{\Leb}{\operatorname{Leb}}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\MCMC}
+%    \begin{macrocode}
+ \newcommand{\MCMC}{\emph{MCMC}\xspace}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\Numbers}
+%    \begin{macrocode}
+ \newcommand{\Numbers}{\mathbb{N}}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\Prob}
+%    \begin{macrocode}
+ \newcommand{\Prob}[1]{\operatorname{\mathbb{P}}\left[#1\right]}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\Rationals}
+%    \begin{macrocode}
+ \newcommand{\Rationals}{\mathbb{Q}}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\Reals}
+%    \begin{macrocode}
+ \newcommand{\Reals}{\mathbb{R}}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\Var}
+%    \begin{macrocode}
+ \newcommand{\Var}[1]{\operatorname{Var}\left[#1\right]}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\Cov}
+%    \begin{macrocode}
+ \newcommand{\Cov}[1]{\operatorname{Cov}\left[#1\right]}
+%    \end{macrocode}
+%\end{macro} 
+%
+%
+%\begin{macro}{\ball}
+%    \begin{macrocode}
+ \DeclareMathOperator{\ball}{ball}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\origin}
+%    \begin{macrocode}
+ \DeclareMathOperator{\origin}{\operatorname{\bf o}}
+%\end{macro} 
+%
+%\begin{macro}{\d}
+%    \begin{macrocode}
+ \renewcommand{\d}{\,\operatorname{d}}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\dist}
+%    \begin{macrocode}
+ \DeclareMathOperator{\dist}{dist}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\eps}
+%    \begin{macrocode}
+ \newcommand{\eps}{\varepsilon}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\grad}
+%    \begin{macrocode}
+ \DeclareMathOperator{\grad}{grad}
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\half}
+%    \begin{macrocode}
+ \newcommand{\half}{\mathchoice{%
+   \frac{1}{2}}{\tfrac{1}{2}}%
+  {\text{$\scriptstyle\tfrac{1}{2}$}}%
+  {\text{$\scriptscriptstyle\tfrac{1}{2}$}}%
+ }
+%    \end{macrocode}
+%\end{macro} 
+%
+%\begin{macro}{\sgn}
+%    \begin{macrocode}
+ \DeclareMathOperator{\sgn}{sgn}
+%    \end{macrocode}
+%\end{macro} 
+
+%\begin{environment}{Figure}
+%    \begin{macrocode}
+\newenvironment{Figure}
+ {\begin{figure}[htbp]\begin{framed}}
+ {\end{framed}\end{figure}}
+%    \end{macrocode}
+%\end{environment} 
+
+
+%    \begin{macrocode}
+%</package>
+%    \end{macrocode}
+%\Finale

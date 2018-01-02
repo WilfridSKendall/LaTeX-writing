@@ -1,0 +1,84 @@
+%%
+%% This is file `WSKmaths.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% WSKmaths.dtx  (with options: `package')
+%% ----------------------------------------------------------------
+%% WSKmaths --- useful mathematical definitions.
+%% E-mail: w.s.kendall@warwick.ac.uk
+%% Released under the MIT License.
+%% ----------------------------------------------------------------
+%% 
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{WSKmaths}[2016/02/06 v1.2 Useful mathematical definitions.]
+
+ \RequirePackage{amsmath}
+ \RequirePackage{amsthm}
+ \RequirePackage{amsfonts}
+ \RequirePackage{framed}
+ \RequirePackage[small]{caption}
+ \RequirePackage{xspace}
+
+\theoremstyle{plain}
+ \newtheorem{thm}{Theorem}
+ \newtheorem{proposition}[thm]{Proposition}
+ \newtheorem{lem}[thm]{Lemma}
+ \newtheorem{cor}[thm]{Corollary}
+ \newtheorem{exercise}[thm]{Exercise}
+\theoremstyle{definition}
+ \newtheorem{defn}[thm]{Definition}
+\theoremstyle{remark}
+ \newtheorem{rem}[thm]{Remark}
+ \newtheorem{qn}[thm]{Question}
+
+ \newcommand{\Borel}{\mathfrak{B}}
+ \newcommand{\CFTP}{\emph{CFTP}\xspace}
+ \newcommand{\Expect}[1]{\operatorname{\mathbb{E}}\left[#1\right]}
+ \newcommand{\Indicator}[1]{\operatorname{\mathbb{I}}\left[#1\right]}
+ \newcommand{\Integers}{\mathbb{Z}}
+ \DeclareMathOperator{\Hess}{Hess}
+ \newcommand{\Ito}{It\^o\xspace}
+ \newcommand{\Law}[1]{\mathcal{L}\left({#1}\right)}
+ \newcommand{\Leb}{\operatorname{Leb}}
+ \newcommand{\MCMC}{\emph{MCMC}\xspace}
+ \newcommand{\Numbers}{\mathbb{N}}
+ \newcommand{\Prob}[1]{\operatorname{\mathbb{P}}\left[#1\right]}
+ \newcommand{\Rationals}{\mathbb{Q}}
+ \newcommand{\Reals}{\mathbb{R}}
+ \newcommand{\Var}[1]{\operatorname{Var}\left[#1\right]}
+ \newcommand{\Cov}[1]{\operatorname{Cov}\left[#1\right]}
+ \DeclareMathOperator{\ball}{ball}
+ \DeclareMathOperator{\origin}{\operatorname{\bf o}}
+ \renewcommand{\d}{\,\operatorname{d}}
+ \DeclareMathOperator{\dist}{dist}
+ \newcommand{\eps}{\varepsilon}
+ \DeclareMathOperator{\grad}{grad}
+ \newcommand{\half}{\mathchoice{%
+   \frac{1}{2}}{\tfrac{1}{2}}%
+  {\text{$\scriptstyle\tfrac{1}{2}$}}%
+  {\text{$\scriptscriptstyle\tfrac{1}{2}$}}%
+ }
+ \DeclareMathOperator{\sgn}{sgn}
+
+\newenvironment{Figure}
+ {\begin{figure}[htbp]\begin{framed}}
+ {\end{framed}\end{figure}}
+
+%% 
+%% Copyright (C) 2012, 2015 by Wilfrid S. Kendall <w.s.kendall@warwick.ac.uk>
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the MIT License.
+%% 
+%% This work is "maintained" by Wilfrid S. Kendall.
+%% 
+%% This work consists of the file  WSKmaths.dtx
+%% and the derived files           WSKmaths.ins,
+%%                                 WSKmaths.pdf and
+%%                                 WSKmaths.sty.
+%% 
+%%
+%% End of file `WSKmaths.sty'.

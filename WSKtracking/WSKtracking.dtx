@@ -1,0 +1,431 @@
+ 
+% \iffalse meta-comment
+% !TEX program  = pdfLaTeX
+%<*internal>
+\iffalse
+%</internal>
+%<*readme>
+----------------------------------------------------------------
+WSKtracking --- commands related to tracking changes.
+E-mail: w.s.kendall@warwick.ac.uk
+Released under the MIT License.
+----------------------------------------------------------------
+
+This package loads useful mathematics packages, provides a number of useful environments, and defines a number of significant macros.
+%</readme>
+%<*internal>
+\fi
+\def\nameofplainTeX{plain}
+\ifx\fmtname\nameofplainTeX\else
+  \expandafter\begingroup
+\fi
+%</internal>
+%<*install>
+\input docstrip.tex
+\keepsilent
+\askforoverwritefalse
+\preamble
+----------------------------------------------------------------
+WSKtracking --- commands related to tracking changes.
+E-mail: w.s.kendall@warwick.ac.uk
+Released under the MIT License.
+----------------------------------------------------------------
+
+\endpreamble
+\postamble
+
+Copyright (C) 2012, 2015 by Wilfrid S. Kendall <w.s.kendall@warwick.ac.uk>
+
+This work may be distributed and/or modified under the
+conditions of the MIT License.
+
+This work is "maintained" by Wilfrid S. Kendall.
+
+This work consists of the file  WSKtracking.dtx
+and the derived files           WSKtracking.ins,
+                                WSKtracking.pdf and
+                                WSKtracking.sty.
+
+\endpostamble
+\usedir{tex/latex/WSKtracking}
+\generate{
+  \file{\jobname.sty}{\from{\jobname.dtx}{package}}
+}
+%</install>
+%<install>\endbatchfile
+%<*internal>
+\usedir{source/latex/WSKtracking}
+\generate{
+  \file{\jobname.ins}{\from{\jobname.dtx}{install}}
+}
+\nopreamble\nopostamble
+\usedir{doc/latex/WSKtracking}
+\generate{
+  \file{README.txt}{\from{\jobname.dtx}{readme}}
+}
+\ifx\fmtname\nameofplainTeX
+  \expandafter\endbatchfile
+\else
+  \expandafter\endgroup
+\fi
+%</internal>
+%<*package>
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{WSKtracking}[2015/12/24 v1.01 Tracking changes.]
+%</package>
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{\jobname}
+\usepackage[numbered]{hypdoc}
+\usepackage[longnamesfirst,round]{natbib}
+\EnableCrossrefs
+\CodelineIndex
+\OnlyDescription
+\begin{document}
+  \DocInput{\jobname.dtx}
+\end{document}
+%</driver>
+% \fi
+% 
+%\GetFileInfo{\jobname.sty}
+%
+%\title{^^A
+%  \textsf{WSKtracking} --- Tracking changes.
+%}
+%\author{^^A
+%  Wilfrid S. Kendall\thanks{E-mail: \url{w.s.kendall@warwick.ac.uk}}^^A
+%}
+%\date{This version \today}
+% \newcommand{\Title}{Tracking changes}
+%
+%\maketitle
+%
+%\changes{v1.0}{2009/10/06}{First public release}
+%
+% \TrackingPreamble
+%
+%This package establishes some useful commands for tracking changes. 
+% They are especially useful when working collaboratively.
+%
+% \section{Packages}
+% The presence of the following useful packages is ensured by the \verb+WSKtracking+ package:
+%\begin{itemize}
+%\item\verb+graphicx+,
+%\item\verb+fancyvrb+, 
+%\item\verb+multicol+, 
+%\item\verb+ulem+, 
+%\item\verb+framed+, 
+%\item\verb+tocloft+, 
+%\item\verb+xcolor+ with options \verb+[usenames,dvipsnames]+.
+%\end{itemize}
+%
+% \section{Preamble and Postamble}
+% The \verb+TrackingPreamble+ and \verb+TrackingPostamble+ contain useful information about changes, comments, and versions.
+% 
+% \DescribeMacro{\TrackingPreamble}
+% \verb+TrackingPreamble+ occurs at the start of this document.
+% Note the need to pre-define \verb+\Title+ (to hold the document title!).
+% Information provided includes:
+% \begin{itemize}
+% \item Title;
+% \item Listing of of a text file \verb+VERSION+, which should be placed in the same directory as the {\LaTeX} source.
+% Contents of \verb+VERSION+ are generally at the discretion of the user. The example below is formatted as:
+% \begin{enumerate}
+% \item Version number and date in first line,
+% \item Second line is a separator,
+% \item Third line contains the \verb+git+ hash for the latest commit;
+% \item Fourth line describes the author;
+% \item Fifth line left blank;
+% \item Sixth line gives a brief description of most recent change.
+% \end{enumerate}
+% \item Table of contents;
+% \item List of issues at this revision (both open issues and closed issues).
+% \end{itemize}
+% \DescribeMacro{\listissuesname}
+% Issues can be placed in the list of issues in the \verb+TrackingPreamble+ 
+% (whose title can be adjusted -- it is produced by the macro \verb+\listissuesname+).
+% If \verb+hyperref+ is loaded then the lists are hyperlinked to the relevant pages.
+% In practice \verb+TrackingPreamble+ is better placed \emph{before} \verb+\maketitle+.
+%
+% % \DescribeMacro{\TrackingPostamble}
+% \verb+TrackingPostamble+ is best placed at the end of the document.
+% It repeats a listing of the text file named \verb+VERSION+, and also lists the file given by the optional argument, if present.
+%
+% \TrackingPostamble
+%
+% \section{Displays to be completed and notes about incidental issues}
+% \DescribeMacro{\TBC}
+% The \verb+\TBC+ macro displays a list of matters needing attention:
+%
+% \begin{verbatim} \TBC{List matters needing attention here} \end{verbatim}
+% 
+% \TBC{List matters needing attention here}
+% 
+% An optional argument \emph{arg} replaces \textbf{To Do:} by \textbf{\emph{arg}:} as here:
+%
+% \begin{verbatim} \TBC[Attention]{List matters needing attention here} \end{verbatim}
+% 
+% \TBC[Attention]{List matters needing attention here}
+%
+% \DescribeMacro{\NoteThis}
+% The \verb+\NoteThis+ macro displays a set of notes 
+% concerning detailed arguments which one may not wish to include in the final version of the paper.
+%
+% \begin{verbatim} \NoteThis{Notes go here} \end{verbatim}
+% 
+% \NoteThis{Notes go here}
+%
+% If the option \verb+no-comment+ is given, 
+% \begin{verbatim} \includepackage[no-comment]{WSKtracking} \end{verbatim}
+% then all such notes are omitted.
+%
+% \newpage
+%
+% \section{Issues}
+% \DescribeMacro{\issue}
+% Use \verb+\issue{This needs attention}+ to signal an issue that must not be forgotten.
+%\issue{This needs attention}
+% \DescribeMacro{\nonissue}
+% Close an issue by using \verb+\nonissue{No longer needs attention}+ (hence, a simple edit of \verb+\issue+).
+%\nonissue{This no longer needs attention}
+% It is recommended that each issue / nonissue be placed on its own line,
+% to make it easier to remove when the time comes to produce the final version.
+%
+% Normally one would use \verb+\NB+ and \verb+\xNB+ rather than \verb+\issue+ and \verb+\nonissue+.
+%
+% \DescribeMacro{\issuesection}
+% Larger issues can be placed in their own box, 
+% and the reference in the list of issues at the start then includes a note of the section concerned:
+% \begin{verbatim}\issuesection{A sectional issue that is open.}\end{verbatim}
+% \issuesection{A sectional issue that is open.}
+%
+% \DescribeMacro{\nonissuesection}
+% It is easy to close such issues:
+% \begin{verbatim}\nonissuesection{A sectional issue that is no longer open.}\end{verbatim}
+% \nonissuesection{A sectional issue that is no longer open.}
+%
+% If the option \verb+no-comment+ is given, 
+% \begin{verbatim} \includepackage[no-comment]{WSKtracking} \end{verbatim}
+% then all such issues (open or closed) are omitted.
+%
+% \section{Incidental Notes}
+% \DescribeMacro{\NB}
+% Incidental notes on issues can be attached using \verb+\NB{First note}+ thus\NB{First note}, 
+% and can have two arguments thus \verb+\NB[WSK1]{Second note}+, in which case first argument indicates person responsible for the note.
+%\NB[WSK1]{Second note}
+% \DescribeMacro{\xNB}
+% The issues can be closed easily thus \verb+\xNB{First closed note}+ or thus \verb+\xNB[WSK1]{Second closed note}+, as can be seen.
+%\xNB{First closed note}\xNB[WSK1]{Second closed note}
+% It is recommended that each note / closed note be placed on its own line,
+% to make it easier to remove when the time comes to produce the final version.
+%
+% If the option \verb+no-comment+ is given,
+% \begin{verbatim} \includepackage[no-comment]{WSKtracking} \end{verbatim}
+% then all such incidental notes (open or closed) are omitted.
+%
+% \section{Version control}
+% Over the course of drafting and re-drafting a paper, it is common for authors to accumulate a confusing vaariety of different versions
+% (\verb+paper.tex+, \verb+paper1.tex+, \verb+paper-submitted.tex+, \verb+paper-revised.tex+, \ldots)
+% This is hard to control, and risks losing valuable edits in the forest of different versions!
+% 
+% Far better to learn how to use a good version-control system such as \verb+rcs+ (old-fashioned but still effective),
+% \verb+Subversion+ (better for collaboration), or my current favourite \verb+git+ (very good, and simple useage is very simple).
+% Version-control systems can store all previous versions efficiently (for example in compressed difference-based form) and invisibly (in hidden directories).
+% Previous versions can be recovered at will (typically when exercising a little care to get the right previous version, and to avoid over-writing the current version:
+% however in practice it is rare to need to recover a previous version other than the most recent one).
+%
+% A typical workflow for \verb+git+ is as follows:
+%\begin{itemize}
+%  \item \verb+git init+ establishes the \verb+git+ repository;
+% \item \verb+git add paper.tex paper.bib paper.pdf+ places these files under \verb+git+ version control -- note that they do not have to be text files!
+% \item \verb+git commit -a+ updates the repository with the latest versions of all controlled files, and prompts you to add a comment describing this revision
+% (one should get into the invariable habit of doing this after every revision no matter how small!).
+% Just before this stage, it is useful to update the file \verb+VERSION+ described above.
+% (It is possible for \verb+git+-adepts to make \verb+git+ do this automatically \ldots.)
+% \item \verb+git checkout paper.tex+ recovers \verb+paper.tex+ 
+% -- be careful to rename current version temporarily if you don't wish it to be over-written!
+% \end{itemize}
+% See \url{http://git-scm.com/} for many more details and ideas for using \verb+git+. 
+% A good book to consult is \cite{Lynn-2007}, which provides a friendly introduction. 
+%
+% \bibliographystyle{plainnat}
+% \bibliography{WSKtracking}
+%
+%\StopEventually{^^A
+%  \PrintChanges
+%  \PrintIndex
+%}
+%
+%    \begin{macrocode}
+%<*package>
+%    \end{macrocode}
+%    
+%
+%    \begin{macrocode}
+ \RequirePackage{graphicx}
+ \RequirePackage{fancyvrb,multicol}
+ \RequirePackage[normalem]{ulem}
+ \RequirePackage{tocloft}
+ \RequirePackage{framed}
+ \RequirePackage[usenames,dvipsnames]{xcolor}
+ \RequirePackage{ifthen}
+
+ \definecolor{okcolor}{named}{OliveGreen}
+ \definecolor{alertcolor}{named}{Red}
+%    \end{macrocode}
+
+% \begin{macro}{\listissuesname}
+%    \begin{macrocode}
+  \newcommand{\listissuesname}{List of issues at this Revision:}
+  \newlistof{issues}{loi}{{\small\listissuesname}}
+%    \end{macrocode}
+% \end{macro}
+
+% Tracking queries
+% \begin{macro}{\issuesection}
+%    \begin{macrocode}
+  \newcommand{\issuesection}[1]{%
+    \refstepcounter{issues}%
+    \addcontentsline{loi}{issues}{%
+        \protect\numberline{\theissues}Section \thesection: #1%
+        }
+    \TBC{\textcolor{alertcolor}{#1}}
+    }
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\nonissuesection}
+%    \begin{macrocode}
+  \newcommand{\nonissuesection}[1]{%
+    \refstepcounter{issues}%
+    \addcontentsline{loi}{issues}{%
+        \protect\numberline{\theissues}\textcolor{okcolor}{Section \thesection: {\sout #1}}}%
+    }
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\issue}
+%    \begin{macrocode}
+  \newcommand{\issue}[1]{%
+    \refstepcounter{issues}%
+    \addcontentsline{loi}{issues}{%
+        \protect\numberline{\theissues}#1%
+        }%
+    \textcolor{alertcolor}{%
+        \footnote{\scriptsize{\textcolor{alertcolor}{#1}}}%
+        }%
+    }
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\nonissue}
+%    \begin{macrocode}
+  \newcommand{\nonissue}[1]{%
+    \refstepcounter{issues}%
+    \addcontentsline{loi}{issues}{%
+        \protect\numberline{\theissues}{\textcolor{okcolor}{$\surd$ \sout{#1}}}%
+        }%
+    \footnote{%
+        \scriptsize{\textcolor{okcolor}{\textbf{$\surd$} \sout{#1}}}
+        }
+    }
+%    \end{macrocode}
+% \end{macro}
+%
+% Editorial footnotes
+% \begin{macro}{\NB}
+%    \begin{macrocode}
+  \newcommand{\NB}[2][\textsc{Open}]{\issue{\textbf{#1:} #2}}
+%    \end{macrocode}
+% \end{macro} 
+%
+% \begin{macro}{\xNB}
+%    \begin{macrocode}
+  \newcommand{\xNB}[2][\textsc{Done}]{\nonissue{\textbf{#1:} #2}}
+%    \end{macrocode}
+% \end{macro} 
+%
+% ``To be done''
+% \begin{macro}{\TBC}
+%    \begin{macrocode}
+  \newcommand{\TBC}[2][To Do]{%
+    \begin{framed}
+    \begin{center}
+      \includegraphics[width=1in]{under-construction} % Note: locating graphics for rubber.
+    \end{center}
+    \begin{quote}
+      \textbf{#1:}   \emph{ #2 }
+    \end{quote}
+    \end{framed}
+  }
+%    \end{macrocode}
+% \end{macro} 
+%
+% Note which can be removed later.
+% \begin{macro}{\NoteThis}
+%    \begin{macrocode}
+  \newcommand{\NoteThis}[1]{%
+    \begin{framed}\textcolor{blue}{%
+    \begin{quotation}%
+\noindent{\textbf{To be omitted from public version.}}\\
+\noindent\emph{#1}
+    \end{quotation}
+    }
+    \end{framed}
+ }
+%    \end{macrocode}
+% \end{macro} 
+%
+% Preamble and postamble
+% \begin{macro}{\TrackingPreamble}
+%    \begin{macrocode}
+\newcommand{\TrackingPreamble}{
+ \pagenumbering{roman}
+ \noindent\textbf{\Large \Title}
+ \smallskip
+ {\scriptsize\VerbatimInput[lastline=8]{../VERSION}}
+ \bigskip
+ \begin{multicols*}{2}
+ \tableofcontents
+ \medskip
+ {\scriptsize \listofissues}
+ \end{multicols*}
+ \cleardoublepage
+ \pagenumbering{arabic}
+ \setcounter{page}{1}
+}
+%    \end{macrocode}
+% \end{macro} 
+%
+% \begin{macro}{\TrackingPostamble}
+%    \begin{macrocode}
+\newcommand{\TrackingPostamble}[1][]{
+ \vfill
+ {\scriptsize\VerbatimInput{../VERSION}}
+  \ifthenelse {\equal {#1} {} }
+  {}
+  {\vfill{\scriptsize\VerbatimInput{#1}}}
+}
+%    \end{macrocode}
+% \end{macro} 
+%
+%    \begin{macrocode}
+\DeclareOption{no-comment}{
+ \renewcommand{\NoteThis}[1]{}%
+ \renewcommand{\issuesection}[1]{}%
+ \renewcommand{\nonissuesection}[1]{}%
+ \renewcommand{\issue}[1]{}%
+ \renewcommand{\nonissue}[1]{}%
+ \renewcommand{\TrackingPreamble}{}%
+}
+\ProcessOptions\relax
+%    \end{macrocode}
+%
+%
+%
+%    \begin{macrocode}
+%</package>
+%    \end{macrocode}
+%\Finale
