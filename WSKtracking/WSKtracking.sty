@@ -79,9 +79,12 @@
     }
     \end{framed}
  }
-\newcommand{\TrackingPreamble}{
+\newcommand{\TrackingPreamble}[1][]{
  \pagenumbering{roman}
- \noindent\textbf{\Large \Title}
+ \noindent\textbf{\Large \Title}%
+\ifthenelse {\equal {#1} {} }
+  {}
+  {{\let\thefootnote\relax\footnote{\tiny Source file location asserted to be: \texttt{#1}}}}
  \smallskip
  {\scriptsize\VerbatimInput[lastline=8]{../VERSION}}
  \bigskip

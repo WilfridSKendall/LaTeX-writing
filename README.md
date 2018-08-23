@@ -1,6 +1,13 @@
 # LaTeX-writing
 Useful packages for writing mathematical documents in LaTeX.
 
-Details are described in PDF files in WSKtracking and WSKmaths directories.
+## WSKtracking --- commands related to tracking changes.
 
-See LaTeX-writing.tex (and LaTeX-writing.pdf) for a basic example.
+This package loads useful mathematics packages, provides a number of useful environments, and defines a number of significant macros.
+
+
+## Further details
+
+See the PDF files in WSKtracking and WSKmaths directories.
+
+See also LaTeX-writing.tex (and LaTeX-writing.pdf) for a basic example.

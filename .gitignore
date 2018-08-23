@@ -25,7 +25,11 @@ image/*.eps
 *.blg
 *.desktop
 *.gz
+*.hd
 *.html
+*.idx
+*.ilg
+*ind
 *.kilepr
 *.log
 *.loi

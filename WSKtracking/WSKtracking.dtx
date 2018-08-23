@@ -130,7 +130,7 @@ and the derived files           WSKtracking.ins,
 % Information provided includes:
 % \begin{itemize}
 % \item Title;
-% \item Listing of of a text file \verb+VERSION+, which should be placed in the same directory as the {\LaTeX} source.
+% \item Listing of a text file \verb+VERSION+, which should be placed in the same directory as the {\LaTeX} source.
 % Contents of \verb+VERSION+ are generally at the discretion of the user. The example below is formatted as:
 % \begin{enumerate}
 % \item Version number and date in first line,
@@ -142,6 +142,7 @@ and the derived files           WSKtracking.ins,
 % \end{enumerate}
 % \item Table of contents;
 % \item List of issues at this revision (both open issues and closed issues).
+% item The optional argument is placed in a footnote to the title, set in fixed-width font.
 % \end{itemize}
 % \DescribeMacro{\listissuesname}
 % Issues can be placed in the list of issues in the \verb+TrackingPreamble+ 
@@ -381,9 +382,12 @@ and the derived files           WSKtracking.ins,
 % Preamble and postamble
 % \begin{macro}{\TrackingPreamble}
 %    \begin{macrocode}
-\newcommand{\TrackingPreamble}{
+\newcommand{\TrackingPreamble}[1][]{
  \pagenumbering{roman}
- \noindent\textbf{\Large \Title}
+ \noindent\textbf{\Large \Title}%
+\ifthenelse {\equal {#1} {} }
+  {}
+  {{\let\thefootnote\relax\footnote{\tiny Source file location asserted to be: \texttt{#1}}}}
  \smallskip
  {\scriptsize\VerbatimInput[lastline=8]{../VERSION}}
  \bigskip
