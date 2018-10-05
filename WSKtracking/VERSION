@@ -1,7 +1,6 @@
-Version 1.xx
- (...)
+Version 1.0     (Thu Aug 23 18:13:12 2018 +0100)
 ================================================
-commit ...
-Author: ...
-Template for version file.
+commit a3a41758de00e3dcfda6cd4b1225b316b946a331
+Author: Wilfrid Kendall <W.S.Kendall@warwick.ac.uk>
 
+    Aufgmented README.md.
