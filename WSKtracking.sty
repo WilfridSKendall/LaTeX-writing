@@ -1,0 +1,130 @@
+%%
+%% This is file `WSKtracking.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% WSKtracking.dtx  (with options: `package')
+%% ----------------------------------------------------------------
+%% WSKtracking --- commands related to tracking changes.
+%% E-mail: w.s.kendall@warwick.ac.uk
+%% Released under the MIT License.
+%% ----------------------------------------------------------------
+%% 
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{WSKtracking}[2015/12/24 v1.01 Tracking changes.]
+ \RequirePackage{graphicx}
+ \RequirePackage{fancyvrb,multicol}
+ \RequirePackage[normalem]{ulem}
+ \RequirePackage{tocloft}
+ \RequirePackage{framed}
+ \RequirePackage[usenames,dvipsnames]{xcolor}
+ \RequirePackage{ifthen}
+
+ \definecolor{okcolor}{named}{OliveGreen}
+ \definecolor{alertcolor}{named}{Red}
+
+  \newcommand{\listissuesname}{List of issues at this Revision:}
+  \newlistof{issues}{loi}{{\small\listissuesname}}
+
+  \newcommand{\issuesection}[1]{%
+    \refstepcounter{issues}%
+    \addcontentsline{loi}{issues}{%
+        \protect\numberline{\theissues}Section \thesection: #1%
+        }
+    \TBC{\textcolor{alertcolor}{#1}}
+    }
+  \newcommand{\nonissuesection}[1]{%
+    \refstepcounter{issues}%
+    \addcontentsline{loi}{issues}{%
+        \protect\numberline{\theissues}\textcolor{okcolor}{Section \thesection: {\sout #1}}}%
+    }
+  \newcommand{\issue}[1]{%
+    \refstepcounter{issues}%
+    \addcontentsline{loi}{issues}{%
+        \protect\numberline{\theissues}#1%
+        }%
+    \textcolor{alertcolor}{%
+        \footnote{\scriptsize{\textcolor{alertcolor}{#1}}}%
+        }%
+    }
+  \newcommand{\nonissue}[1]{%
+    \refstepcounter{issues}%
+    \addcontentsline{loi}{issues}{%
+        \protect\numberline{\theissues}{\textcolor{okcolor}{$\surd$ \sout{#1}}}%
+        }%
+    \footnote{%
+        \scriptsize{\textcolor{okcolor}{\textbf{$\surd$} \sout{#1}}}
+        }
+    }
+  \newcommand{\NB}[2][\textsc{Open}]{\issue{\textbf{#1:} #2}}
+  \newcommand{\xNB}[2][\textsc{Done}]{\nonissue{\textbf{#1:} #2}}
+  \newcommand{\TBC}[2][To Do]{%
+    \begin{framed}
+    \begin{center}
+      \includegraphics[width=1in]{under-construction} % Note: locating graphics for rubber.
+    \end{center}
+    \begin{quote}
+      \textbf{#1:}   \emph{ #2 }
+    \end{quote}
+    \end{framed}
+  }
+  \newcommand{\NoteThis}[1]{%
+    \begin{framed}\textcolor{blue}{%
+    \begin{quotation}%
+\noindent{\textbf{To be omitted from public version.}}\\
+\noindent\emph{#1}
+    \end{quotation}
+    }
+    \end{framed}
+ }
+\newcommand{\TrackingPreamble}[1][]{
+ \pagenumbering{roman}
+ \noindent\textbf{\Large \Title}%
+\ifthenelse {\equal {#1} {} }
+  {}
+  {{\let\thefootnote\relax\footnote{\tiny Source file location asserted to be: \texttt{#1}}}}
+ \smallskip
+ {\scriptsize\VerbatimInput[lastline=8]{VERSION}}
+ \bigskip
+ \begin{multicols*}{2}
+ \tableofcontents
+ \medskip
+ {\scriptsize \listofissues}
+ \end{multicols*}
+ \cleardoublepage
+ \pagenumbering{arabic}
+ \setcounter{page}{1}
+}
+\newcommand{\TrackingPostamble}[1][]{
+ \vfill
+ {\scriptsize\VerbatimInput{VERSION}}
+  \ifthenelse {\equal {#1} {} }
+  {}
+  {\vfill{\scriptsize\VerbatimInput{#1}}}
+}
+\DeclareOption{no-comment}{
+ \renewcommand{\NoteThis}[1]{}%
+ \renewcommand{\issuesection}[1]{}%
+ \renewcommand{\nonissuesection}[1]{}%
+ \renewcommand{\issue}[1]{}%
+ \renewcommand{\nonissue}[1]{}%
+ \renewcommand{\TrackingPreamble}{}%
+}
+\ProcessOptions\relax
+%% 
+%% Copyright (C) 2012, 2015 by Wilfrid S. Kendall <w.s.kendall@warwick.ac.uk>
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the MIT License.
+%% 
+%% This work is "maintained" by Wilfrid S. Kendall.
+%% 
+%% This work consists of the file  WSKtracking.dtx
+%% and the derived files           WSKtracking.ins,
+%%                                 WSKtracking.pdf and
+%%                                 WSKtracking.sty.
+%% 
+%%
+%% End of file `WSKtracking.sty'.
