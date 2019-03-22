@@ -53,7 +53,7 @@ checkin: ; -git commit -a
 
 # ----------------------------------------------
 $(title).sty: $(title).dtx ; tex $(title).dtx
-$(title).pdf: $(title).dtx VERSION
+$(title).pdf: $(title).dtx VERSION1.txt
 	pdflatex $(title).dtx
 	bibtex ${title}
 	makeindex -s gind.ist $(title)

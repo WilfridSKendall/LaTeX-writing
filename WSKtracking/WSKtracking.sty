@@ -86,7 +86,7 @@
   {}
   {{\let\thefootnote\relax\footnote{\tiny Source file location asserted to be: \texttt{#1}}}}
  \smallskip
- {\scriptsize\VerbatimInput[lastline=8]{VERSION}}
+ {\scriptsize\VerbatimInput[lastline=8]{VERSION.txt}}
  \bigskip
  \begin{multicols*}{2}
  \tableofcontents
@@ -99,7 +99,7 @@
 }
 \newcommand{\TrackingPostamble}[1][]{
  \vfill
- {\scriptsize\VerbatimInput{VERSION}}
+ {\scriptsize\VerbatimInput{VERSION.txt}}
   \ifthenelse {\equal {#1} {} }
   {}
   {\vfill{\scriptsize\VerbatimInput{#1}}}
