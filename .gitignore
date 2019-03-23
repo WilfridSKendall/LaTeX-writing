@@ -29,7 +29,7 @@ image/*.eps
 *.html
 *.idx
 *.ilg
-*ind
+*.ind
 *.ins
 *.kilepr
 *.log
