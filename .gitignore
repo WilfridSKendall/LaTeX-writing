@@ -30,6 +30,7 @@ image/*.eps
 *.idx
 *.ilg
 *ind
+*.ins
 *.kilepr
 *.log
 *.loi
