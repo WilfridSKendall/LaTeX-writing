@@ -75,15 +75,16 @@ and the derived files           WSKmaths.ins,
 %</package>
 %<*driver>
 \documentclass{ltxdoc}
-\usepackage{a4wide}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage[british]{babel}
-\usepackage{\jobname}
-\usepackage[numbered]{hypdoc}
-\usepackage[longnamesfirst,round]{natbib}
-\usepackage[notcite]{showkeys}
-\usepackage{graphicx}
+\RequirePackage{a4wide}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
+\RequirePackage[british]{babel}
+\RequirePackage{\jobname}
+\RequirePackage[shortlabels]{enumitem}
+\RequirePackage[numbered]{hypdoc}
+\RequirePackage[longnamesfirst,round]{natbib}
+\RequirePackage[notcite]{showkeys}
+\RequirePackage{graphicx}
 \EnableCrossrefs
 \CodelineIndex
 \OnlyDescription
@@ -113,7 +114,7 @@ and the derived files           WSKmaths.ins,
 % The concluding section offers a few general remarks about writing in \LaTeX.
 %
 % \section{Packages}
-% The mathematics packages loaded by this package are
+% The mathematics and associated packages loaded by this package are
 % \begin{itemize}
 % \item\verb+amsmath+, 
 % \item\verb+amsfonts+, 
@@ -121,6 +122,8 @@ and the derived files           WSKmaths.ins,
 % \item\verb+framed+, 
 % \item\verb+caption+, 
 % \item\verb+xspace+.
+% \item\verb+natbib+.
+% \item\verb+enumitem+.
 % \end{itemize}
 % It is worth looking at the documentation for \verb+amsmath+ (\url{ftp://ftp.ams.org/pub/tex/doc/amsmath/amsldoc.pdf})
 % and \verb+amsthm+ (\url{ftp://ftp.ams.org/pub/tex/doc/amscls/amsthdoc.pdf});
@@ -358,9 +361,11 @@ and the derived files           WSKmaths.ins,
 % } 
 % \end{verbatim}
 % I prefer to use \verb+\usepackage{natbib}+ with a name-date system (the default for \verb+natbib+).
-% This offers considerable flexibility, for example using \verb+\citep+ for a reference in parentheses
+% The  \verb+natbib+ offers considerable flexibility, for example using \verb+\citep+ for a reference in parentheses
 % \citep{GoosensMittelbachSamarin-1994}. See the \verb+natbib+ quick reference for more details:
 % \url{http://merkel.zoneo.net/Latex/natbib.php}.
+% (I generally use a modified \verb+bst+ file \verb+plainnattrimmed+, which removes \verb+doi+ fields and \verb+month+ data
+% following the advice in \url{tex.stackexchange.com/questions/125133/remove-issn-doi-url-when-using-plainnat-and-natbib}.)
 % I have modified \verb+\usepackage{showkeys}+ to \verb+\usepackage[notcite]{showkeys}+, so as to avoid 
 % annotating citations with keys, redundant if one constructs citations as \verb+Authors-year+.
 %
@@ -399,6 +404,9 @@ and the derived files           WSKmaths.ins,
  \RequirePackage{framed}
  \RequirePackage{caption}
  \RequirePackage{xspace}
+
+ \RequirePackage[shortlabels]{enumitem}
+ \RequirePackage[longnamesfirst,round]{natbib}
 
 \theoremstyle{plain}
  \newtheorem{thm}{Theorem}
