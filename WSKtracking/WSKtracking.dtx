@@ -218,9 +218,10 @@ and the derived files           WSKtracking.ins,
 %\NB[WSK1]{Second note}
 % \DescribeMacro{\xNB}
 % The issues can be closed easily thus \verb+\xNB{First closed note}+ or thus \verb+\xNB[WSK1]{Second closed note}+, as can be seen.
-%\xNB{First closed note}\xNB[WSK1]{Second closed note}
+%\xNB{First closed note}\,\xNB[WSK1]{Second closed note}
 % It is recommended that each note / closed note be placed on its own line,
 % to make it easier to remove when the time comes to produce the final version.
+% Separate consecutive notes by \verb+\!+ to space out the footnote marks.
 %
 % If the option \verb+no-comment+ is given,
 % \begin{verbatim} \includepackage[no-comment]{WSKtracking} \end{verbatim}
@@ -310,11 +311,12 @@ and the derived files           WSKtracking.ins,
 % \begin{macro}{\issue}
 %    \begin{macrocode}
   \newcommand{\issue}[1]{%
+    \ifhmode\unskip\fi%
     \refstepcounter{issues}%
     \addcontentsline{loi}{issues}{%
         \protect\numberline{\theissues}#1%
         }%
-    \textcolor{alertcolor}{%
+        \textcolor{alertcolor}{%
         \footnote{\scriptsize{\textcolor{alertcolor}{#1}}}%
         }%
     }
@@ -324,13 +326,14 @@ and the derived files           WSKtracking.ins,
 % \begin{macro}{\nonissue}
 %    \begin{macrocode}
   \newcommand{\nonissue}[1]{%
+    \ifhmode\unskip\fi%
     \refstepcounter{issues}%
     \addcontentsline{loi}{issues}{%
         \protect\numberline{\theissues}{\textcolor{okcolor}{$\surd$ \sout{#1}}}%
         }%
     \footnote{%
         \scriptsize{\textcolor{okcolor}{\textbf{$\surd$} \sout{#1}}}
-        }
+        }%
     }
 %    \end{macrocode}
 % \end{macro}
