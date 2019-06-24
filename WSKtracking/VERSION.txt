@@ -1,8 +1,9 @@
-Version 1.09
+Version 1.10
  Converted \NoteThis macro to environment.
- Need to add color and emphasis!
+ Added emphasis and blue colour to NoteThis environment.
 ================================================
-commit c7b1ed99c2403a3141fbd992277f82cd28d9d8c9 (HEAD -> master, tag: 1.9)
+commit 80c85f1f02e436e503f5d3e144638c6ba8f6ea9b (HEAD -> master, tag: 1.10)
 Author: Wilfrid Kendall <W.S.Kendall@warwick.ac.uk>
-Date:   Mon Jun 24 09:21:13 2019 +0100
+Date:   Mon Jun 24 19:57:54 2019 +0100
+
 
