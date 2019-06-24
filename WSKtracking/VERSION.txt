@@ -1,7 +1,8 @@
-Version 1.xx
- (...)
+Version 1.09
+ Converted \NoteThis macro to environment.
+ Need to add color and emphasis!
 ================================================
-commit ...
-Author: ...
-Template for version file.
+commit c7b1ed99c2403a3141fbd992277f82cd28d9d8c9 (HEAD -> master, tag: 1.9)
+Author: Wilfrid Kendall <W.S.Kendall@warwick.ac.uk>
+Date:   Mon Jun 24 09:21:13 2019 +0100
 

@@ -1,4 +1,3 @@
- 
 % \iffalse meta-comment
 % !TEX program  = pdfLaTeX
 %<*internal>
@@ -156,7 +155,7 @@ and the derived files           WSKtracking.ins,
 %
 % \TrackingPostamble
 %
-% \section{Displays to be completed and notes about incidental issues}
+% \section{Displays of TBC and incidental notes}
 % \DescribeMacro{\TBC}
 % The \verb+\TBC+ macro displays a list of matters needing attention:
 %
@@ -170,13 +169,19 @@ and the derived files           WSKtracking.ins,
 % 
 % \TBC[Attention]{List matters needing attention here}
 %
-% \DescribeMacro{\NoteThis}
-% The \verb+\NoteThis+ macro displays a set of notes 
-% concerning detailed arguments which one may not wish to include in the final version of the paper.
+% \DescribeMacro{NoteThis}
+% The \verb+NoteThis+ environment displays a set of notes 
+% concerning detailed arguments which one would typically \emph{not} wish to include in the final version of the paper.
 %
-% \begin{verbatim} \NoteThis{Notes go here} \end{verbatim}
+% \begin{verbatim} 
+% \begin{NoteThis}
+% Notes go here
+% \end{NoteThis}
+% \end{verbatim}
 % 
-% \NoteThis{Notes go here}
+% \begin{NoteThis}
+% Notes go here
+% \end{NoteThis}
 %
 % If the option \verb+no-comment+ is given, 
 % \begin{verbatim} \includepackage[no-comment]{WSKtracking} \end{verbatim}
@@ -370,17 +375,27 @@ and the derived files           WSKtracking.ins,
 % Note which can be removed later.
 % \begin{macro}{\NoteThis}
 %    \begin{macrocode}
-  \newcommand{\NoteThis}[1]{%
-    \begin{framed}\textcolor{blue}{%
+  \newenvironment{NoteThis}{%
+    \begin{framed}%\textcolor{blue}{%
     \begin{quotation}%
 \noindent{\textbf{To be omitted from public version.}}\\
-\noindent\emph{#1}
-    \end{quotation}
-    }
+\noindent\color{blue}\em
+}%
+{    \end{quotation}
+    %}
     \end{framed}
  }
 %    \end{macrocode}
 % \end{macro} 
+%%   \newcommand{\NoteThis}[1]{%
+%%     \begin{framed}\textcolor{blue}{%
+%%     \begin{quotation}%
+%% \noindent{\textbf{To be omitted from public version.}}\\
+%% \noindent\emph{#1}
+%%     \end{quotation}
+%%     }
+%%     \end{framed}
+%%  }
 %
 % Preamble and postamble
 % \begin{macro}{\TrackingPreamble}
@@ -420,7 +435,7 @@ and the derived files           WSKtracking.ins,
 %
 %    \begin{macrocode}
 \DeclareOption{no-comment}{
- \renewcommand{\NoteThis}[1]{}%
+ \renewenvironment{NoteThis}{}{}%
  \renewcommand{\issuesection}[1]{}%
  \renewcommand{\nonissuesection}[1]{}%
  \renewcommand{\issue}[1]{}%

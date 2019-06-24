@@ -11,7 +11,6 @@
 %% Released under the MIT License.
 %% ----------------------------------------------------------------
 %% 
-
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{WSKtracking}[2015/12/24 v1.01 Tracking changes.]
  \RequirePackage{graphicx}
@@ -72,15 +71,25 @@
     \end{quote}
     \end{framed}
   }
-  \newcommand{\NoteThis}[1]{%
-    \begin{framed}\textcolor{blue}{%
+  \newenvironment{NoteThis}{%
+    \begin{framed}%\textcolor{blue}{%
     \begin{quotation}%
 \noindent{\textbf{To be omitted from public version.}}\\
-\noindent\emph{#1}
-    \end{quotation}
-    }
+\noindent\color{blue}\em
+}%
+{    \end{quotation}
+    %}
     \end{framed}
  }
+%%   \newcommand{\NoteThis}[1]{%
+%%     \begin{framed}\textcolor{blue}{%
+%%     \begin{quotation}%
+%% \noindent{\textbf{To be omitted from public version.}}\\
+%% \noindent\emph{#1}
+%%     \end{quotation}
+%%     }
+%%     \end{framed}
+%%  }
 \newcommand{\TrackingPreamble}[1][]{
  \pagenumbering{roman}
  \noindent\textbf{\Large \Title}%
@@ -107,7 +116,7 @@
   {\vfill{\scriptsize\VerbatimInput{#1}}}
 }
 \DeclareOption{no-comment}{
- \renewcommand{\NoteThis}[1]{}%
+ \renewenvironment{NoteThis}{}{}%
  \renewcommand{\issuesection}[1]{}%
  \renewcommand{\nonissuesection}[1]{}%
  \renewcommand{\issue}[1]{}%

@@ -1,4 +1,3 @@
-
 ----------------------------------------------------------------
 WSKtracking --- commands related to tracking changes.
 E-mail: w.s.kendall@warwick.ac.uk
