@@ -41,22 +41,24 @@
         \protect\numberline{\theissues}\textcolor{okcolor}{Section \thesection: {\sout #1}}}%
     }
   \newcommand{\issue}[1]{%
+    \ifhmode\unskip\fi%
     \refstepcounter{issues}%
     \addcontentsline{loi}{issues}{%
         \protect\numberline{\theissues}#1%
         }%
-    \textcolor{alertcolor}{%
+        \textcolor{alertcolor}{%
         \footnote{\scriptsize{\textcolor{alertcolor}{#1}}}%
         }%
     }
   \newcommand{\nonissue}[1]{%
+    \ifhmode\unskip\fi%
     \refstepcounter{issues}%
     \addcontentsline{loi}{issues}{%
         \protect\numberline{\theissues}{\textcolor{okcolor}{$\surd$ \sout{#1}}}%
         }%
     \footnote{%
         \scriptsize{\textcolor{okcolor}{\textbf{$\surd$} \sout{#1}}}
-        }
+        }%
     }
   \newcommand{\NB}[2][\textsc{Open}]{\issue{\textbf{#1:} #2}}
   \newcommand{\xNB}[2][\textsc{Done}]{\nonissue{\textbf{#1:} #2}}
