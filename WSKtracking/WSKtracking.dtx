@@ -155,9 +155,9 @@ and the derived files           WSKtracking.ins,
 %
 % \TrackingPostamble
 %
-% \section{Displays of TBC and incidental notes}
+% \section{To-do lists and incidental notes}
 % \DescribeMacro{\TBC}
-% The \verb+\TBC+ macro displays a list of matters needing attention:
+% (Now deprecated: use environment \verb+TBC2+.) The \verb+\TBC+ macro displays a list of matters needing attention:
 %
 % \begin{verbatim} \TBC{List matters needing attention here} \end{verbatim}
 % 
@@ -168,6 +168,16 @@ and the derived files           WSKtracking.ins,
 % \begin{verbatim} \TBC[Attention]{List matters needing attention here} \end{verbatim}
 % 
 % \TBC[Attention]{List matters needing attention here}
+%
+% Preferred now to use environment:
+% \begin{verbatim}\begin{TBC2}List matters needing attention here.\end{TBC2}\end{verbatim}
+% \begin{TBC2}
+% List matters needing attention here.
+% \end{TBC2}
+%
+% As before, an optional argument allows one to replace \verb+To Do+ by another string of characters.
+%
+% The advantage of the environment form \verb+TBC2+ is that it can include blank lines and other environments.
 %
 % \DescribeEnv{NoteThis}
 % The \verb+NoteThis+ environment displays a set of notes 
@@ -371,18 +381,34 @@ and the derived files           WSKtracking.ins,
   }
 %    \end{macrocode}
 % \end{macro} 
+% Now deprecated in favour of
+% 
+% \begin{macro}{TBC2}
+%    \begin{macrocode}
+  \newenvironment{TBC2}[1][To Do]{%
+    \begin{framed}
+    \begin{center}
+      \includegraphics[width=1in]{under-construction} % Note: locating graphics for rubber.
+    \end{center}%\textcolor{blue}{%
+    \begin{quote}%
+      \textbf{#1:} \em%
+}%
+{    \end{quote}
+    \end{framed}
+ }
+%    \end{macrocode}
+% \end{macro} 
 %
 % Note which can be removed later.
-% \begin{macro}{\NoteThis}
+% \begin{macro}{NoteThis}
 %    \begin{macrocode}
   \newenvironment{NoteThis}{%
     \begin{framed}%\textcolor{blue}{%
     \begin{quotation}%
 \noindent{\textbf{To be omitted from public version.}}\\
-\noindent\color{blue}\em
+\noindent\color{blue}\em%
 }%
 {    \end{quotation}
-    %}
     \end{framed}
  }
 %    \end{macrocode}
@@ -435,6 +461,7 @@ and the derived files           WSKtracking.ins,
 %
 %    \begin{macrocode}
 \DeclareOption{no-comment}{
+ \renewenvironment{TBC}[1]{}{}%
  \renewenvironment{NoteThis}{}{}%
  \renewcommand{\issuesection}[1]{}%
  \renewcommand{\nonissuesection}[1]{}%
