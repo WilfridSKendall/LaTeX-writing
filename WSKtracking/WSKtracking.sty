@@ -67,18 +67,28 @@
       \includegraphics[width=1in]{under-construction} % Note: locating graphics for rubber.
     \end{center}
     \begin{quote}
-      \textbf{#1:}   \emph{ #2 }
+      \textcolor{red}{\textbf{#1:}   \emph{ #2 }}
     \end{quote}
     \end{framed}
   }
+  \newenvironment{TBC2}[1][To Do]{%
+    \begin{framed}
+    \begin{center}
+      \includegraphics[width=1in]{under-construction} % Note: locating graphics for rubber.
+    \end{center}%
+    \begin{quote}\color{red}%
+      \textbf{#1:} \em%
+}%
+{    \end{quote}
+    \end{framed}
+ }
   \newenvironment{NoteThis}{%
     \begin{framed}%\textcolor{blue}{%
     \begin{quotation}%
 \noindent{\textbf{To be omitted from public version.}}\\
-\noindent\color{blue}\em
+\noindent\color{blue}\em%
 }%
 {    \end{quotation}
-    %}
     \end{framed}
  }
 %%   \newcommand{\NoteThis}[1]{%
@@ -116,6 +126,7 @@
   {\vfill{\scriptsize\VerbatimInput{#1}}}
 }
 \DeclareOption{no-comment}{
+ \renewenvironment{TBC}[1]{}{}%
  \renewenvironment{NoteThis}{}{}%
  \renewcommand{\issuesection}[1]{}%
  \renewcommand{\nonissuesection}[1]{}%
