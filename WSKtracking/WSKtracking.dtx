@@ -180,24 +180,40 @@ and the derived files           WSKtracking.ins,
 %
 % The advantage of the environment form \verb+TBC2+ is that it can include blank lines and other environments.
 %
-% \DescribeEnv{NoteThis}
-% The \verb+NoteThis+ environment displays a set of notes 
+% \DescribeMacro{NoteThis}
+% The \verb+NoteThis+ macro displays a set of notes 
+% concerning detailed arguments which one would typically \emph{not} wish to include in the final version of the paper.
+%
+% Now deprecated in favour of \verb+NoteThis2+ environment.
+%
+% \begin{verbatim} 
+% \NoteThis{
+% Notes go here
+% }
+% \end{verbatim}
+% 
+% \NoteThis{
+% Notes go here
+% }
+%
+% \DescribeEnv{NoteThis2}
+% The \verb+NoteThis2+ environment displays a set of notes 
 % concerning detailed arguments which one would typically \emph{not} wish to include in the final version of the paper.
 %
 % \begin{verbatim} 
-% \begin{NoteThis}
+% \begin{NoteThis2}
 % Notes go here
-% \end{NoteThis}
+% \end{NoteThis2}
 % \end{verbatim}
 % 
-% \begin{NoteThis}
+% \begin{NoteThis2}
 % Notes go here
-% \end{NoteThis}
+% \end{NoteThis2}
 %
 % If the option \verb+no-comment+ is given, 
 % \begin{verbatim} \includepackage[no-comment]{WSKtracking} \end{verbatim}
 % then all such notes are omitted. 
-% However (for now) environment \verb+TBC2+
+% However (for now) environments \verb+TBC2+ and  \verb+NoteThis2+
 % is not disabled by this.
 %
 % \newpage
@@ -413,6 +429,34 @@ and the derived files           WSKtracking.ins,
 %% {\begingroup\color{blue}\begin{framed}\begin{quotation}%
 %% \noindent{\textbf{To be omitted from public version.}}\\}%
 %% {\end{quotation}\end{framed}\endgroup}
+%
+% \begin{macro}{NoteThis}
+%    \begin{macrocode}
+  \newcommand{\NoteThis}[1]{%
+    \begin{framed}\textcolor{blue}{%
+    \begin{quotation}%
+\noindent{\textbf{To be omitted from public version.}}\\
+\noindent\emph{#1}
+    \end{quotation}
+    }
+    \end{framed}
+ }
+%    \end{macrocode}
+% \end{macro} 
+% Now deprecated in favour of
+% 
+% \begin{macro}{NoteThis2}
+%    \begin{macrocode}
+  \newenvironment{NoteThis2}[1][To be omitted from public version.]{%
+    \begin{framed}
+    \begin{quote}\color{blue}%
+      \textbf{#1:}\\ \em%
+}%
+{    \end{quote}
+    \end{framed}
+ }
+%    \end{macrocode}
+% \end{macro} 
 %
 % Preamble and postamble
 % \begin{macro}{\TrackingPreamble}
