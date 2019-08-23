@@ -20,6 +20,7 @@
  \RequirePackage{framed}
  \RequirePackage[usenames,dvipsnames]{xcolor}
  \RequirePackage{ifthen}
+ \RequirePackage{comment}
 
  \definecolor{okcolor}{named}{OliveGreen}
  \definecolor{alertcolor}{named}{Red}
@@ -82,24 +83,11 @@
 {    \end{quote}
     \end{framed}
  }
-  \newenvironment{NoteThis}{%
-    \begin{framed}%\textcolor{blue}{%
-    \begin{quotation}%
-\noindent{\textbf{To be omitted from public version.}}\\
-\noindent\color{blue}\em%
-}%
-{    \end{quotation}
-    \end{framed}
- }
-%%   \newcommand{\NoteThis}[1]{%
-%%     \begin{framed}\textcolor{blue}{%
-%%     \begin{quotation}%
-%% \noindent{\textbf{To be omitted from public version.}}\\
-%% \noindent\emph{#1}
-%%     \end{quotation}
-%%     }
-%%     \end{framed}
-%%  }
+%% NOTE THIS
+%% \specialcomment{NoteThis}%
+%% {\begingroup\color{blue}\begin{framed}\begin{quotation}%
+%% \noindent{\textbf{To be omitted from public version.}}\\}%
+%% {\end{quotation}\end{framed}\endgroup}
 \newcommand{\TrackingPreamble}[1][]{
  \pagenumbering{roman}
  \noindent\textbf{\Large \Title}%
@@ -126,8 +114,8 @@
   {\vfill{\scriptsize\VerbatimInput{#1}}}
 }
 \DeclareOption{no-comment}{
- \renewenvironment{TBC}[1]{}{}%
- \renewenvironment{NoteThis}{}{}%
+ \excludecomment{NoteThis}%
+ \renewcommand{\TBC}[2][To Do]{}%
  \renewcommand{\issuesection}[1]{}%
  \renewcommand{\nonissuesection}[1]{}%
  \renewcommand{\issue}[1]{}%
