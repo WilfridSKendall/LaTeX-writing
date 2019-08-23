@@ -1,10 +1,1 @@
-Version 1.11
- Converted \NoteThis macro to environment.
- Added emphasis and blue colour to NoteThis environment.
-================================================
-commit 5ccac8c19725afb585a9d4c3325888dd43df417f (HEAD -> master, tag: 1.11)
-Author: Wilfrid Kendall <W.S.Kendall@warwick.ac.uk>
-Date:   Mon Jun 24 20:05:15 2019 +0100
-
-
-
+../VERSION.txt
