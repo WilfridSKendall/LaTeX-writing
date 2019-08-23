@@ -454,7 +454,7 @@ and the derived files           WSKtracking.ins,
 }%
 {    \end{quote}
     \end{framed}
- }
+}
 %    \end{macrocode}
 % \end{macro} 
 %
@@ -496,7 +496,13 @@ and the derived files           WSKtracking.ins,
 %
 %    \begin{macrocode}
 \DeclareOption{no-comment}{
- \excludecomment{NoteThis}%
+   \newenvironment{NoteThis2}[1][To be omitted from public version.]{%
+\begin{comment}
+}%
+{%
+\end{comment}
+}
+ \renewcommand{\NoteThis}[1]{}%
  \renewcommand{\TBC}[2][To Do]{}%
  \renewcommand{\issuesection}[1]{}%
  \renewcommand{\nonissuesection}[1]{}%

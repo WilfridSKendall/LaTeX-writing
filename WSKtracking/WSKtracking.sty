@@ -88,6 +88,23 @@
 %% {\begingroup\color{blue}\begin{framed}\begin{quotation}%
 %% \noindent{\textbf{To be omitted from public version.}}\\}%
 %% {\end{quotation}\end{framed}\endgroup}
+  \newcommand{\NoteThis}[1]{%
+    \begin{framed}\textcolor{blue}{%
+    \begin{quotation}%
+\noindent{\textbf{To be omitted from public version.}}\\
+\noindent\emph{#1}
+    \end{quotation}
+    }
+    \end{framed}
+ }
+  \newenvironment{NoteThis2}[1][To be omitted from public version.]{%
+    \begin{framed}
+    \begin{quote}\color{blue}%
+      \textbf{#1:}\\ \em%
+}%
+{    \end{quote}
+    \end{framed}
+}
 \newcommand{\TrackingPreamble}[1][]{
  \pagenumbering{roman}
  \noindent\textbf{\Large \Title}%
@@ -114,7 +131,13 @@
   {\vfill{\scriptsize\VerbatimInput{#1}}}
 }
 \DeclareOption{no-comment}{
- \excludecomment{NoteThis}%
+   \newenvironment{NoteThis2}[1][To be omitted from public version.]{%
+\begin{comment}
+}%
+{%
+\end{comment}
+}
+ \renewcommand{\NoteThis}[1]{}%
  \renewcommand{\TBC}[2][To Do]{}%
  \renewcommand{\issuesection}[1]{}%
  \renewcommand{\nonissuesection}[1]{}%
