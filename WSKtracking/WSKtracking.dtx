@@ -287,6 +287,22 @@ and the derived files           WSKtracking.ins,
 % \bibliographystyle{plainnat}
 % \bibliography{WSKtracking}
 %
+% \appendix
+% \section{Issues with issue macros}
+% Commands such as \verb+\issue+ (and hence \verb+\NB+) cannot
+% deal with fragile commands such as \verb+\eqref+ from \texttt{amsmath}.
+% For example, \verb+\issue{\eqref{eq:ESJD6}}+ produces
+% a very long line in the \texttt{.loi} file starting:
+% \begin{verbatim}\contentsline {issues}{\numberline {15}{\textup {\global \let \smash  \end{verbatim}
+% An immediate fix would be to use the \verb+\protect+ directive on the offending 
+% macro \verb+\eqref+ thus: \verb+\issue{\protect \eqref{eq:ESJD6}}+.
+% This produces the following (relatively) short line in the \texttt{.loi} file:
+% \begin{verbatim}\contentsline {issues}{\numberline {15}{\eqref {eq:ESJD6}}}{43}{issues.15}\end{verbatim}
+% (It will be necessary to delete the broken \texttt{.loi} file first, 
+% and may even be necessary to restart the {\TeX} editor you are using.)
+% See \url{https://texfaq.org/FAQ-protect.html} for some details and background
+% concerning \verb+\protect+.
+%
 %\StopEventually{^^A
 %  \PrintChanges
 %  \PrintIndex
@@ -347,7 +363,7 @@ and the derived files           WSKtracking.ins,
     \ifhmode\unskip\fi%
     \refstepcounter{issues}%
     \addcontentsline{loi}{issues}{%
-        \protect\numberline{\theissues}#1%
+        \protect\numberline{\theissues} #1%
         }%
         \textcolor{alertcolor}{%
         \footnote{\scriptsize{\textcolor{alertcolor}{#1}}}%
